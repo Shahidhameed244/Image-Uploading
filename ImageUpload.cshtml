@@ -1,0 +1,148 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Segoe UI';
+            margin: 0;
+            background: #f3f3f3;
+        }
+
+        .main {
+            display: block;
+            text-align: center;
+            padding: 10px 20px;
+            width: 500px;
+            border-radius: 15px;
+            background: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #4CAF50;
+        }
+
+        label {
+            display: block;
+            width: 100%;
+            text-align: left;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        input {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            width: 100%;
+            border-radius: 10px;
+            border: none;
+            font-size: 17px;
+        }
+
+        .message {
+            color: red;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main">
+        <h1>
+            SESSION NO.1
+        </h1>
+        <h3>
+            LOGIN FORM
+        </h3>
+        <form action="ImageDownload" id="ImageDownload" method="post" enctype="multipart/form-data">
+            <label for="fileInput">Upload an image:</label>
+            <input name="files" type="file" id="fileInput" />
+            <p id="message" style="color: red;"></p>
+            <p id="message"></p>
+            <p id="successMessage" style="color: green;"></p>
+            <div class="wrap">
+                <button value="submit" id="btnsubmit" type="submit" disabled>
+                    Submit
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('fileInput').addEventListener('change', function () {
+            const file = this.files[0];
+            const message = document.getElementById('message');
+            const submitButton = document.getElementById('btnsubmit');
+            const validImageTypes = ['image/jpeg', 'image/png', 'image/gif'];
+
+            if (file) {
+                const fileType = file.type;
+
+                if (validImageTypes.includes(fileType)) {
+                    message.textContent = '';
+                    submitButton.disabled = false; // Enable the submit button
+                } else {
+                    message.textContent = 'Please upload a valid image file (JPEG, PNG, GIF).';
+                    this.value = ''; // Clear the input value
+                    submitButton.disabled = true; // Disable the submit button
+                }
+            } else {
+                submitButton.disabled = true; // Disable the submit button if no file is selected
+            }
+        });
+
+        document.getElementById('uploadForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent the default form submission
+            const fileInput = document.getElementById('fileInput');
+            const message = document.getElementById('message');
+            const successMessage = document.getElementById('successMessage');
+
+            if (!fileInput.value) {
+                message.textContent = 'Please select a valid image file before submitting.';
+                successMessage.textContent = '';
+            } else {
+                message.textContent = '';
+                successMessage.textContent = 'Image uploaded successfully!';
+
+            }
+        });
+    </script>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10 text-success">
+            @ViewBag.UploadStatus
+        </div>
+    </div>
+</body>
+</html>

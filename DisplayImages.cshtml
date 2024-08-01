@@ -1,0 +1,170 @@
+﻿@model IEnumerable<WebApplication4.Models.Img>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ImageDownload</title>
+</head>
+<body>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+    <!DOCTYPE html>
+
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Login</title>
+        <style>
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                font-family: 'Segoe UI';
+                margin: 0;
+                background: #f3f3f3;
+            }
+
+            .main {
+                display: block;
+                text-align: center;
+                padding: 10px 20px;
+                width: 500px;
+                border-radius: 15px;
+                background: white;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            }
+
+            h1 {
+                color: #4CAF50;
+            }
+
+            label {
+                display: block;
+                width: 100%;
+                text-align: left;
+                margin-top: 10px;
+                margin-bottom: 15px;
+                color: #555;
+            }
+
+            input {
+                display: block;
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 20px;
+                box-sizing: border-box;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+            }
+
+            button {
+                cursor: pointer;
+                background-color: #4CAF50;
+                color: white;
+                padding: 12px;
+                margin-top: 10px;
+                margin-bottom: 15px;
+                width: 100%;
+                border-radius: 10px;
+                border: none;
+                font-size: 17px;
+            }
+
+            .message {
+                color: red;
+                display: none;
+                transition: 0.5s ease-in-out;
+                text-decoration: blink;
+            }
+
+            .succ-message {
+                color: green;
+                transition: 0.5s ease-in-out;
+                text-decoration: blink;
+            }
+
+            .wrap {
+                text-align: right;
+            }
+
+            .bg-img {
+                height: 200px;
+                width: 200px;
+                margin-top: 50px;
+                margin-right: 1 0px;
+            }
+
+            .lists {
+                text-decoration: underline;
+                color: green;
+                cursor: pointer;
+            }
+
+                .lists:hover {
+                    transition: 0.7s ease-in-out;
+                    font-size: 14px;
+                    text-decoration: none;
+                    color: green;
+                    cursor: pointer;
+                }
+        </style>
+    </head>
+    <body>
+
+        <div class="main">
+            <h1>
+                SESSION NO.2
+            </h1>
+            <h3>
+                Image Uploading
+            </h3>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <img src="@item.pathp" class="bg-img" />
+                    </td>
+
+                </tr>
+            }
+            <div class="wrap">
+                <a href="~/Image/ImageDownload" id="blinkingLink" class="lists">
+                    Want to Add New Image
+                </a>
+            </div>
+        </div>
+    </body>
+    </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
